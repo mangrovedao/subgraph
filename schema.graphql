@@ -24,6 +24,8 @@ type Offer @entity {
   isOpen: Boolean!
   isFailed: Boolean!
   isFilled: Boolean!
+  # Price, do we want to calcuate it in the UI, Query or save it here?
+  # deprovision, we need to keep track, if an offer has been deprovisioned or not
   isRetracted: Boolean!
   failedReason: Bytes
   posthookFailReason: Bytes
@@ -37,13 +39,20 @@ type Offer @entity {
 type Order @entity {
   id: String!
   transactionHash: Bytes!
-  type: String! # MARKET or LIMTI
+  type: String! # MARKET or LIMIT
 
   taker: Bytes
   takerGot: BigInt
   takerGave: BigInt
   penalty: BigInt
   feePaid: BigInt
+  # Missing expiry date
+  # How do i know what market it was for?
+  # The settings FillWants, FillOrKill, and restingOrder are not saved
+  # We e.g. use FillWants in to know if it was a Buy or Sell order.
+  # Price, do we want to calcuate it in the UI, Query or save it here?
+  # status, do we want to calcuate it in the UI, Query or save it here?
+  
 
   offer: Offer
   realTaker: Bytes # for market order it's equal taker

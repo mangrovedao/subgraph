@@ -35,7 +35,8 @@ export function handleCredit(event: Credit): void {
   deposit.isDeposit = true;
 
   deposit.kandel = event.address;
-
+  
+  // checks if the kandel exists
   const kandel = KandelEntity.load(event.address)!;
 
   if (Address.fromBytes(kandel.base).equals(event.params.token)) {

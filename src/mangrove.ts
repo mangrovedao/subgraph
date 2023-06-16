@@ -27,8 +27,11 @@ import {
 import { Market, Order, Offer, Kandel } from "../generated/schema"
 import { addOrderToStack, getEventUniqueId, getMarketId, getOfferId, getOrCreateAccount, getOrderFromStack, removeOrderFromStack } from "./helpers";
 
+// Can you get all approvals from calling the contract on chain?
+// I think it is reasonable that the user want to know what approvals they have given
 export function handleApproval(event: Approval): void {}
 
+// Same for credit and debit
 export function handleCredit(event: Credit): void {}
 
 export function handleDebit(event: Debit): void {}
@@ -60,7 +63,6 @@ export function handleOfferRetract(event: OfferRetract): void {
     event.params.id,
   );
   const offer = Offer.load(offerId)!; 
-
   offer.isOpen = false;
   offer.isRetracted = true;
 
@@ -131,6 +133,8 @@ export function handleOfferWrite(event: OfferWrite): void {
   );
   let offer = Offer.load(offerId);
   if (!offer) {
+      // Is there any way of knowing the previous version of the offer?
+      // Maybe we don't need it, if we just save the correct new state, and what triggered this new state.
     offer = createNewOffer(event);
   }
 
@@ -141,6 +145,7 @@ export function handleOfferWrite(event: OfferWrite): void {
     event.params.outbound_tkn,
     event.params.inbound_tkn,
   );
+  // checks if market exists
   const market = Market.load(marketId)!;
   offer.market = market.id;
 
@@ -164,6 +169,7 @@ export function handleOrderComplete(event: OrderComplete): void {
   const order = getOrderFromStack();
 
   order.taker = event.params.taker;
+  // Not sure if we want to mix model for MarketOrder and MangroveOrder. Doing it like then we could potentially end up with a very large entity
   order.realTaker = event.params.taker; // for market order realTaker == event.params.taker
   order.takerGot = event.params.takerGot;
   order.takerGave = event.params.takerGave;

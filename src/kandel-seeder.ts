@@ -11,6 +11,7 @@ export function handleNewAaveKandel(event: NewAaveKandel): void {
 }
 
 export function handleNewKandel(event: NewKandel): void {
+  // Registres the specific kandel instance, so that we will listen to its events
   Kandel.create(event.params.kandel);
 
   const kandel = new KandelEntity(event.params.kandel);

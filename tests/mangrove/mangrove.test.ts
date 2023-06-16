@@ -55,6 +55,7 @@ describe("Describe entity assertions", () => {
     assert.entityCount("Market", 1);
 
     const id = BigInt.fromI32(0);
+    // maybe use named parameters?
     let offerWrite = createOfferWriteEvent(
       token0, 
       token1,
@@ -94,6 +95,7 @@ describe("Describe entity assertions", () => {
     );
     handleOfferWrite(offerWrite);
 
+    // should check that the other fields are also saved correctly, for both offers
     assert.fieldEquals('Offer', offerId, 'isOpen', 'true');
 
     assert.entityCount("Offer", 1);

@@ -52,6 +52,7 @@ export function handleOrderSummary(event: OrderSummary): void {
     }
 
     // update the offer to show that part of the order was filled
+    // Not sure mixing the order and offer data is the best way to do this
     offer.initialWants = event.params.takerWants;
     offer.initialGives = event.params.takerGives;
 
@@ -59,6 +60,7 @@ export function handleOrderSummary(event: OrderSummary): void {
 
     offer.save();
   }
+  
   order.realTaker = event.params.taker;
 
   order.save();
@@ -66,6 +68,7 @@ export function handleOrderSummary(event: OrderSummary): void {
 
 export function handleSetAdmin(event: SetAdmin): void {}
 
+// We should keep track of this
 export function handleSetExpiry(event: SetExpiry): void {}
 
 export function handleSetRouter(event: SetRouter): void {}
