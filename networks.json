@@ -5,11 +5,11 @@
       "startBlock": 43711819
     },
     "KandelSeeder": {
-      "address": "0x68A1778E4D08D8f6De35323a9040791CE8E9EF4C",
+      "address": "0x878f8820cd99a96381074548a1B72d27A77fadA2",
       "startBlock": 43711838
     },
     "AaveKandelSeeder": {
-      "address": "0xC56CEc2A5912B49AAacEc0F391471Aeb4eb8D9D2",
+      "address": "0x215A21620Ded0451F4867A5Ffa347351826233a4",
       "startBlock": 43711845
     },
     "MangroveOrder": {
@@ -17,8 +17,8 @@
       "startBlock": 43711835
     },
     "PointsWeights": {
-      "address": "0xc8f191ee9d78eCFE37507bedE37F5B3D1fc15AE6",
-      "startBlock": 45574139
+      "address": "0xa472bD0CFA442b19a3e896C3F33Ab7336F7e1D7b",
+      "startBlock": 45832115
     }
 
   },
