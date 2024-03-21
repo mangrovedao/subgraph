@@ -349,10 +349,7 @@ export function handleSetFee(event: SetFee): void {
   let market = Market.load(marketId);
 
   if (!market) {
-    market = new Market(marketId);
-    market.active = false;
-    market.fee = BigInt.fromI32(0);
-    market.gasbase = BigInt.fromI32(0);
+    throw new Error("Market not found for set-fee event " + marketId);
   }
 
   market.fee = event.params.value;
