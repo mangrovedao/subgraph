@@ -343,7 +343,19 @@ export function handleSetActive(event: SetActive): void {
 
 export function handleSetDensity(event: SetDensity96X32): void {}
 
-export function handleSetFee(event: SetFee): void {}
+export function handleSetFee(event: SetFee): void {
+  const marketId = event.params.olKeyHash.toHex();
+  let market = Market.load(marketId);
+
+  if (!market) {
+    market = new Market(marketId);
+    market.active = false;
+  }
+
+  market.fee = event.params.value;
+
+  market.save();
+}
 
 export function handleSetGasbase(event: SetGasbase): void {
   const marketId = event.params.olKeyHash.toHex();

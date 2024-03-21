@@ -27,6 +27,7 @@ type Market @entity {
   tickSpacing: BigInt!
   active: Boolean!
   gasbase: BigInt!
+  fee: BigInt!
 }
 
 type Offer @entity {
