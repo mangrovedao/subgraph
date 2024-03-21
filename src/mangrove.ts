@@ -334,6 +334,7 @@ export function handleSetActive(event: SetActive): void {
     market.inbound_tkn = event.params.inbound_tkn;
     market.tickSpacing = event.params.tickSpacing;
     market.gasbase = BigInt.fromI32(0);
+    market.fee = BigInt.fromI32(0);
   }
 
   market.active = event.params.value;
@@ -350,6 +351,8 @@ export function handleSetFee(event: SetFee): void {
   if (!market) {
     market = new Market(marketId);
     market.active = false;
+    market.fee = BigInt.fromI32(0);
+    market.gasbase = BigInt.fromI32(0);
   }
 
   market.fee = event.params.value;
@@ -363,6 +366,7 @@ export function handleSetGasbase(event: SetGasbase): void {
   if (!market) {
     market = new Market(marketId);
     market.active = false;
+    market.fee = BigInt.fromI32(0);
   }
   market.gasbase = event.params.offer_gasbase;
 
