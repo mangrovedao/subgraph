@@ -353,7 +353,6 @@ export function handleSetFee(event: SetFee): void {
   }
 
   market.fee = event.params.value;
-
   market.save();
 }
 
